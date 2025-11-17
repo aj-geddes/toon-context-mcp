@@ -7,8 +7,8 @@ title: Home
     <h1>🔧 TOON-MCP</h1>
     <p>Token-Optimized Object Notation for Efficient AI Context Management</p>
     <div>
-        <a href="/guides/setup" class="btn">Get Started</a>
-        <a href="https://github.com/toon-mcp/toon-context-mcp" class="btn btn-secondary">View on GitHub</a>
+        <a href="{{ '/guides/setup' | relative_url }}" class="btn">Get Started</a>
+        <a href="https://github.com/aj-geddes/toon-context-mcp" class="btn btn-secondary">View on GitHub</a>
     </div>
 </div>
 
@@ -169,16 +169,16 @@ toon_format = convert_json_to_toon(your_json_data)</code></pre>
 
 ## Next Steps
 
-- 📚 [Setup Guide](/guides/setup) - Install and configure TOON-MCP
-- 📖 [User Guide](/guides/user-guide) - Learn how to use TOON effectively
-- 🔧 [Troubleshooting](/guides/troubleshooting) - Common issues and solutions
-- 📘 [API Reference](/api/reference) - Complete API documentation
+- 📚 [Setup Guide]({{ '/guides/setup' | relative_url }}) - Install and configure TOON-MCP
+- 📖 [User Guide]({{ '/guides/user-guide' | relative_url }}) - Learn how to use TOON effectively
+- 🔧 [Troubleshooting]({{ '/guides/troubleshooting' | relative_url }}) - Common issues and solutions
+- 📘 [API Reference]({{ '/api/reference' | relative_url }}) - Complete API documentation
 
 ## Community & Support
 
-- GitHub: [toon-mcp/toon-context-mcp](https://github.com/toon-mcp/toon-context-mcp)
-- Issues: [Report a bug](https://github.com/toon-mcp/toon-context-mcp/issues)
-- Discussions: [Join the conversation](https://github.com/toon-mcp/toon-context-mcp/discussions)
+- GitHub: [aj-geddes/toon-context-mcp](https://github.com/aj-geddes/toon-context-mcp)
+- Issues: [Report a bug](https://github.com/aj-geddes/toon-context-mcp/issues)
+- Discussions: [Join the conversation](https://github.com/aj-geddes/toon-context-mcp/discussions)
 
 ---
 

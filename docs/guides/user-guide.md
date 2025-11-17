@@ -571,6 +571,6 @@ print(example)
 
 ## Next Steps
 
-- [Troubleshooting Guide](/guides/troubleshooting) - Common issues and solutions
-- [API Reference](/api/reference) - Complete API documentation
-- [GitHub](https://github.com/toon-mcp/toon-context-mcp) - Source code and examples
+- [Troubleshooting Guide]({{ '/guides/troubleshooting' | relative_url }}) - Common issues and solutions
+- [API Reference]({{ '/api/reference' | relative_url }}) - Complete API documentation
+- [GitHub](https://github.com/aj-geddes/toon-context-mcp) - Source code and examples

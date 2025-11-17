@@ -554,7 +554,7 @@ verify_toon_conversion(your_data)
 ### Before Opening an Issue
 
 1. **Check this troubleshooting guide**
-2. **Search existing issues**: [GitHub Issues](https://github.com/toon-mcp/toon-context-mcp/issues)
+2. **Search existing issues**: [GitHub Issues](https://github.com/aj-geddes/toon-context-mcp/issues)
 3. **Verify installation**: Run test suite
 4. **Collect diagnostic info**:
 
@@ -591,7 +591,7 @@ result = convert_json_to_toon(data)  # Error occurs here
 
 ### Community Support
 
-- **GitHub Discussions**: [Ask questions](https://github.com/toon-mcp/toon-context-mcp/discussions)
+- **GitHub Discussions**: [Ask questions](https://github.com/aj-geddes/toon-context-mcp/discussions)
 - **Discord**: [Join our community](#) (Coming soon)
 - **Stack Overflow**: Tag `toon-mcp`
 
@@ -625,9 +625,9 @@ result = convert_json_to_toon(data)  # Error occurs here
 
 If you're still experiencing problems:
 
-1. Join our [GitHub Discussions](https://github.com/toon-mcp/toon-context-mcp/discussions)
-2. [Open an issue](https://github.com/toon-mcp/toon-context-mcp/issues/new)
-3. Check the [API Reference](/api/reference) for detailed documentation
+1. Join our [GitHub Discussions](https://github.com/aj-geddes/toon-context-mcp/discussions)
+2. [Open an issue](https://github.com/aj-geddes/toon-context-mcp/issues/new)
+3. Check the [API Reference]({{ '/api/reference' | relative_url }}) for detailed documentation
 
 ---
 

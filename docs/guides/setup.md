@@ -17,7 +17,7 @@ next_title: User Guide
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/toon-mcp/toon-context-mcp.git
+git clone https://github.com/aj-geddes/toon-context-mcp.git
 cd toon-context-mcp
 ```
 
@@ -403,4 +403,4 @@ pytest tests/ --cov=src --cov-report=html
 
 ---
 
-Need help? Check the [Troubleshooting Guide](/guides/troubleshooting) or [open an issue](https://github.com/toon-mcp/toon-context-mcp/issues).
+Need help? Check the [Troubleshooting Guide]({{ '/guides/troubleshooting' | relative_url }}) or [open an issue](https://github.com/aj-geddes/toon-context-mcp/issues).
