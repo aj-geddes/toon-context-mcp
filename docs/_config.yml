@@ -1,0 +1,56 @@
+title: TOON-MCP Documentation
+description: Token-Optimized Object Notation for efficient AI context management
+baseurl: ""
+url: "https://toon-mcp.dev"
+
+# Theme
+theme: minima
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Navigation
+header_pages:
+  - index.md
+  - guides/setup.md
+  - guides/user-guide.md
+  - guides/troubleshooting.md
+  - api/reference.md
+
+# Collections
+collections:
+  guides:
+    output: true
+    permalink: /guides/:name/
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Mermaid support
+mermaid:
+  enable: true
+
+# Build settings
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+  - scope:
+      path: "guides"
+      type: "guides"
+    values:
+      layout: "guide"
