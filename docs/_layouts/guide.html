@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<div class="guide-layout">
+    <aside class="sidebar">
+        <h3>Table of Contents</h3>
+        <div id="toc"></div>
+    </aside>
+
+    <article class="guide-content">
+        <h1>{{ page.title }}</h1>
+
+        {% if page.description %}
+        <p class="lead">{{ page.description }}</p>
+        {% endif %}
+
+        {{ content }}
+
+        <div class="guide-navigation">
+            {% if page.prev %}
+            <a href="{{ page.prev | relative_url }}" class="prev-guide">← Previous: {{ page.prev_title }}</a>
+            {% endif %}
+
+            {% if page.next %}
+            <a href="{{ page.next | relative_url }}" class="next-guide">Next: {{ page.next_title }} →</a>
+            {% endif %}
+        </div>
+    </article>
+</div>
+
+<script>
+    // Auto-generate table of contents
+    document.addEventListener('DOMContentLoaded', function() {
+        const content = document.querySelector('.guide-content');
+        const toc = document.getElementById('toc');
+        const headings = content.querySelectorAll('h2, h3');
+
+        let tocHTML = '<ul>';
+        headings.forEach((heading, index) => {
+            const id = heading.id || `heading-${index}`;
+            heading.id = id;
+
+            const level = heading.tagName === 'H2' ? 'toc-level-1' : 'toc-level-2';
+            tocHTML += `<li class="${level}"><a href="#${id}">${heading.textContent}</a></li>`;
+        });
+        tocHTML += '</ul>';
+
+        toc.innerHTML = tocHTML;
+    });
+</script>

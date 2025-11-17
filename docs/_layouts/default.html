@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+    <!-- Mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            securityLevel: 'loose'
+        });
+    </script>
+
+    <!-- Syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <a href="{{ '/' | relative_url }}">
+                        <span class="logo">🔧</span>
+                        <span class="brand-name">{{ site.title }}</span>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="{{ '/' | relative_url }}">Home</a></li>
+                    <li><a href="{{ '/guides/setup' | relative_url }}">Setup</a></li>
+                    <li><a href="{{ '/guides/user-guide' | relative_url }}">User Guide</a></li>
+                    <li><a href="{{ '/guides/troubleshooting' | relative_url }}">Troubleshooting</a></li>
+                    <li><a href="{{ '/api/reference' | relative_url }}">API</a></li>
+                    <li><a href="https://github.com/toon-mcp/toon-context-mcp" class="github-link">GitHub</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            {{ content }}
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 TOON-MCP Project. Licensed under MIT.</p>
+            <p>Built with Jekyll • Optimized with TOON</p>
+        </div>
+    </footer>
+</body>
+</html>
