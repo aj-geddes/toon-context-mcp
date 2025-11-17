@@ -3,23 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} - {{ site.title }}</title>
+    <title>{{ page.title | default: site.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <meta name="keywords" content="{{ page.keywords | default: 'TOON format, token optimization, JSON compression, MCP server' }}">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ page.title | default: site.title }}">
+    <meta property="og:description" content="{{ page.description | default: site.description }}">
+    <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+    <meta name="twitter:description" content="{{ page.description | default: site.description }}">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
-    <!-- Mermaid -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <script>
-        mermaid.initialize({
-            startOnLoad: true,
-            theme: 'default',
-            securityLevel: 'loose'
-        });
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "TOON-MCP",
+      "applicationCategory": "DeveloperApplication",
+      "description": "Token-Optimized Object Notation (TOON) - A revolutionary JSON compression format that reduces AI token usage by up to 60%",
+      "operatingSystem": "Cross-platform",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "programmingLanguage": "Python",
+      "url": "{{ site.url }}{{ site.baseurl }}",
+      "codeRepository": "https://github.com/aj-geddes/toon-context-mcp",
+      "softwareVersion": "1.0.0",
+      "releaseNotes": "Initial release with JSON to TOON conversion, MCP server integration, and token monitoring",
+      "keywords": "TOON, token optimization, JSON compression, MCP server, AI development tools"
+    }
     </script>
 
     <!-- Syntax highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
 </head>
 <body>
     <header>
@@ -33,9 +61,10 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="{{ '/' | relative_url }}">Home</a></li>
+                    <li><a href="{{ '/what-is-toon' | relative_url }}">What is TOON?</a></li>
+                    <li><a href="{{ '/examples' | relative_url }}">Examples</a></li>
+                    <li><a href="{{ '/faq' | relative_url }}">FAQ</a></li>
                     <li><a href="{{ '/guides/setup' | relative_url }}">Setup</a></li>
-                    <li><a href="{{ '/guides/user-guide' | relative_url }}">User Guide</a></li>
-                    <li><a href="{{ '/guides/troubleshooting' | relative_url }}">Troubleshooting</a></li>
                     <li><a href="{{ '/api/reference' | relative_url }}">API</a></li>
                     <li><a href="https://github.com/aj-geddes/toon-context-mcp" class="github-link">GitHub</a></li>
                 </ul>
@@ -55,5 +84,29 @@
             <p>Built with Jekyll • Optimized with TOON</p>
         </div>
     </footer>
+
+    <!-- Mermaid - Load at end for better compatibility -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.initialize({
+                startOnLoad: true,
+                theme: 'default',
+                securityLevel: 'loose',
+                flowchart: {
+                    useMaxWidth: true,
+                    htmlLabels: true
+                }
+            });
+        });
+    </script>
+
+    <!-- Syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            hljs.highlightAll();
+        });
+    </script>
 </body>
 </html>

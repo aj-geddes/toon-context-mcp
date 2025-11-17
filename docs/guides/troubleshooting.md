@@ -1,7 +1,8 @@
 ---
 layout: guide
-title: Troubleshooting Guide
-description: Common issues and solutions for TOON-MCP
+title: TOON-MCP Troubleshooting Guide - Fix Common Issues
+description: Troubleshoot TOON format conversion errors, MCP server issues, and token optimization problems. Solutions for common TOON-MCP installation and usage issues.
+keywords: TOON troubleshooting, TOON errors, MCP server problems, fix TOON issues, TOON debugging, token optimization errors
 prev: /guides/user-guide
 prev_title: User Guide
 ---

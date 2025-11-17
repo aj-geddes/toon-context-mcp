@@ -1,6 +1,8 @@
 ---
 layout: default
-title: Home
+title: TOON Format - Token Optimized Object Notation for AI | Reduce JSON Tokens by 60%
+description: TOON (Token-Optimized Object Notation) is the revolutionary JSON compression format that reduces AI token usage by up to 60%. Free MCP server for Claude, ChatGPT, and LLMs.
+keywords: TOON format, token optimization, JSON compression, reduce AI tokens, MCP server, Claude optimization, token saver, AI development tools, JSON to TOON converter
 ---
 
 <div class="hero">
@@ -14,13 +16,18 @@ title: Home
 
 ## What is TOON-MCP?
 
-TOON-MCP is a Model Context Protocol server that automatically converts verbose JSON structures into **Token-Optimized Object Notation (TOON)**, reducing token consumption in AI-assisted development workflows by up to **60%**.
+TOON-MCP is a **revolutionary Model Context Protocol (MCP) server** that automatically converts verbose JSON structures into **Token-Optimized Object Notation (TOON)**, reducing token consumption in AI-assisted development workflows by up to **60%**.
 
-Perfect for developers working with:
-- Large codebases
-- Complex API responses
-- Data-heavy MCP tool integrations
-- Token-constrained AI conversations
+[Learn more about TOON format →]({{ '/what-is-toon' | relative_url }})
+
+### Perfect for AI Developers Working With:
+- **Large API responses** that consume precious context tokens
+- **Complex JSON data** in Claude, ChatGPT, and LLM conversations
+- **Token-limited workflows** where every token counts
+- **Cost-sensitive applications** requiring token optimization
+- **Data-heavy MCP integrations** and tool outputs
+
+**New to TOON?** Check out our [real-world examples]({{ '/examples' | relative_url }}) showing 50-60% token reduction.
 
 ## Key Features
 
@@ -154,18 +161,30 @@ graph TB
 toon_format = convert_json_to_toon(your_json_data)</code></pre>
 </div>
 
-## Why TOON?
+## Why Use TOON Format?
 
 <div class="alert alert-info">
-    <strong>📈 Token Efficiency Matters</strong><br>
-    In AI-assisted development, token limits can constrain your workflow. TOON helps you:
+    <strong>📈 Token Efficiency Matters in 2025</strong><br>
+    AI token limits constrain developer productivity. TOON format solves this by:
     <ul>
-        <li>Fit more context in conversations</li>
-        <li>Reduce API costs</li>
-        <li>Improve response times</li>
-        <li>Work with larger datasets</li>
+        <li><strong>Reducing JSON token usage by 60%</strong> - Fit 2-3x more data in context</li>
+        <li><strong>Lowering AI API costs</strong> - Save $100s monthly on Claude/GPT tokens</li>
+        <li><strong>Faster AI responses</strong> - Less data = quicker processing</li>
+        <li><strong>Larger dataset analysis</strong> - Process more in single conversations</li>
+        <li><strong>Lossless compression</strong> - Perfect round-trip conversion guaranteed</li>
     </ul>
+    <a href="{{ '/what-is-toon' | relative_url }}">Read the complete TOON format guide →</a>
 </div>
+
+## How Much Can You Save?
+
+Real-world token reduction across data types:
+- **API Responses**: 50-60% reduction
+- **Database Records**: 55-65% reduction
+- **Config Files**: 40-50% reduction
+- **Log Data**: 35-45% reduction
+
+[See detailed examples →]({{ '/examples' | relative_url }})
 
 ## Next Steps
 

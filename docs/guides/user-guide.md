@@ -1,7 +1,8 @@
 ---
 layout: guide
-title: User Guide
-description: Complete guide to using TOON-MCP effectively
+title: TOON Format User Guide - Convert JSON to TOON & Reduce AI Tokens
+description: Complete guide to using TOON format for token optimization. Learn JSON to TOON conversion, pattern detection, and advanced techniques to reduce AI token consumption by 60%.
+keywords: TOON user guide, JSON to TOON converter, token optimization tutorial, reduce tokens, TOON format examples, AI token savings
 prev: /guides/setup
 prev_title: Setup Guide
 next: /guides/troubleshooting

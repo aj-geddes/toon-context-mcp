@@ -1,7 +1,8 @@
 ---
 layout: guide
-title: Setup Guide
-description: Complete installation and configuration guide for TOON-MCP
+title: TOON-MCP Setup Guide - Install Token Optimizer in 5 Minutes
+description: Step-by-step installation guide for TOON-MCP server. Learn how to install and configure the TOON format JSON token optimizer for Claude, ChatGPT, and other AI tools.
+keywords: TOON installation, TOON setup, MCP server installation, token optimizer setup, install TOON, TOON configuration
 next: /guides/user-guide
 next_title: User Guide
 ---
