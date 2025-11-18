@@ -145,6 +145,199 @@ pip show mcp
 pip install --upgrade mcp
 ```
 
+### Docker Issues
+
+#### Issue: Docker Image Build Fails
+
+```
+ERROR: failed to solve: process "/bin/sh -c pip install..." did not complete successfully
+```
+
+**Solution**:
+
+```bash
+# Clean Docker cache and rebuild
+docker system prune -a
+docker build --no-cache -t toon-mcp-server:latest .
+
+# Check Docker disk space
+docker system df
+```
+
+#### Issue: Container Exits Immediately
+
+```bash
+docker ps -a
+# Shows: Exited (1) 2 seconds ago
+```
+
+**Diagnosis**:
+
+```bash
+# Check container logs
+docker logs toon-mcp-server
+
+# Run interactively to debug
+docker run -it toon-mcp-server:latest /bin/bash
+
+# Test server manually inside container
+python -m src.server
+```
+
+**Common Causes**:
+
+1. **Missing dependencies**: Check Dockerfile COPY commands
+2. **Python path issues**: Verify PYTHONPATH in container
+3. **Permission issues**: Ensure non-root user has access
+
+**Solution**:
+
+```dockerfile
+# Ensure proper ownership in Dockerfile
+RUN chown -R toon:toon /app
+
+# Verify Python can import modules
+RUN python -c "from src.server import main; print('OK')"
+```
+
+#### Issue: Docker MCP Integration Not Working
+
+**Configuration Issue**:
+
+```json
+{
+  "mcpServers": {
+    "toon": {
+      "command": "docker",
+      "args": ["run", "-i", "toon-mcp-server:latest"]
+    }
+  }
+}
+```
+
+**Diagnostic Steps**:
+
+```bash
+# Test Docker command manually
+echo '{"test": "data"}' | docker run -i toon-mcp-server:latest
+
+# Check if image exists
+docker images | grep toon-mcp-server
+
+# Verify Docker daemon is running
+docker info
+```
+
+**Solution**:
+
+1. Ensure Docker image is built:
+```bash
+cd mcp-server-toon
+docker build -t toon-mcp-server:latest .
+```
+
+2. Test container can start:
+```bash
+docker run --rm -i toon-mcp-server:latest
+```
+
+3. Restart Claude Desktop after configuration changes
+
+#### Issue: Permission Denied (Docker)
+
+```
+Got permission denied while trying to connect to the Docker daemon socket
+```
+
+**Solution**:
+
+```bash
+# Linux: Add user to docker group
+sudo usermod -aG docker $USER
+
+# Log out and log back in for changes to take effect
+
+# macOS: Ensure Docker Desktop is running
+open -a Docker
+
+# Windows: Run Docker Desktop as administrator
+```
+
+#### Issue: Container Resource Limits
+
+**Symptoms**: Container is slow or crashes under load
+
+**Diagnosis**:
+
+```bash
+# Check container resource usage
+docker stats toon-mcp-server
+
+# View container details
+docker inspect toon-mcp-server | grep -A 10 "Memory"
+```
+
+**Solution**:
+
+Edit `docker-compose.yml`:
+
+```yaml
+services:
+  toon-mcp-server:
+    deploy:
+      resources:
+        limits:
+          cpus: '2'        # Increase CPU limit
+          memory: 1024M    # Increase memory limit
+        reservations:
+          cpus: '1'
+          memory: 512M
+```
+
+Then restart:
+
+```bash
+docker-compose down
+docker-compose up -d
+```
+
+#### Issue: Docker Image Too Large
+
+```bash
+docker images
+# Shows: toon-mcp-server   latest   800MB
+```
+
+**Solution**:
+
+```dockerfile
+# Use slim base image (already implemented)
+FROM python:3.10-slim
+
+# Add multi-stage build for even smaller images
+FROM python:3.10-slim as builder
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --user -r requirements.txt
+
+FROM python:3.10-slim
+WORKDIR /app
+COPY --from=builder /root/.local /root/.local
+COPY src/ ./src/
+ENV PATH=/root/.local/bin:$PATH
+CMD ["python", "-m", "src.server"]
+```
+
+**Verification**:
+
+```bash
+# Check image size after rebuild
+docker images toon-mcp-server
+
+# Remove dangling images
+docker image prune
+```
+
 ### Conversion Issues
 
 #### Issue: Round-Trip Conversion Fails

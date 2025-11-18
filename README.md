@@ -57,6 +57,40 @@ cd mcp-server-toon
 pip install -e .
 ```
 
+### Docker Installation
+
+TOON-MCP can be run in a Docker container for easy deployment and isolation:
+
+```bash
+# Clone the repository
+git clone https://github.com/aj-geddes/toon-context-mcp.git
+cd toon-context-mcp/mcp-server-toon
+
+# Build the Docker image
+docker build -t toon-mcp-server:latest .
+
+# Run with Docker
+docker run -i toon-mcp-server:latest
+
+# Or use Docker Compose
+docker-compose up -d
+```
+
+**Note**: The Docker image uses Debian-based Python (python:3.10-slim) for optimal performance, not Alpine.
+
+For MCP integration with Docker, update your Claude Desktop config to use the containerized server:
+
+```json
+{
+  "mcpServers": {
+    "toon": {
+      "command": "docker",
+      "args": ["run", "-i", "toon-mcp-server:latest"]
+    }
+  }
+}
+```
+
 ### MCP Configuration
 
 Add to your Claude Desktop config (`~/.config/Claude/claude_desktop_config.json`):

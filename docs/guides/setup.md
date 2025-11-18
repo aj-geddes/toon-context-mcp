@@ -40,6 +40,154 @@ This will install:
 python -c "from src.toon_converter import convert_json_to_toon; print('✅ TOON installed successfully')"
 ```
 
+## Docker Installation
+
+TOON-MCP provides Docker support for containerized deployment, ensuring consistent environments and easy distribution.
+
+### Prerequisites for Docker
+
+- Docker 20.10 or higher
+- Docker Compose (optional, for easier management)
+
+### Building the Docker Image
+
+```bash
+# Clone the repository
+git clone https://github.com/aj-geddes/toon-context-mcp.git
+cd toon-context-mcp/mcp-server-toon
+
+# Build the Docker image
+docker build -t toon-mcp-server:latest .
+```
+
+### Running with Docker
+
+```bash
+# Run the server interactively
+docker run -i toon-mcp-server:latest
+
+# Run with Docker Compose (recommended)
+docker-compose up -d
+
+# View logs
+docker-compose logs -f toon-mcp-server
+
+# Stop the server
+docker-compose down
+```
+
+### Docker Image Details
+
+- **Base Image**: `python:3.10-slim` (Debian-based, not Alpine)
+- **Why not Alpine?** Python performs better on Debian due to pre-built binary wheels and glibc compatibility
+- **Image Size**: ~200MB (optimized with multi-layer caching)
+- **Security**: Runs as non-root user (`toon`)
+
+### Docker Architecture
+
+```mermaid
+graph TB
+    subgraph "Docker Container"
+        A[Python 3.10-slim Base] --> B[TOON Dependencies]
+        B --> C[MCP Server Runtime]
+        C --> D[Non-root User]
+    end
+
+    subgraph "Host System"
+        E[Claude Desktop] --> F[Docker Engine]
+        F --> C
+    end
+
+    style A fill:#2563eb,color:#fff
+    style C fill:#06b6d4,color:#fff
+```
+
+### Docker MCP Configuration
+
+To use the Dockerized TOON server with Claude Desktop:
+
+**Configuration**:
+
+```json
+{
+  "mcpServers": {
+    "toon": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "toon-mcp-server:latest"
+      ]
+    }
+  }
+}
+```
+
+### Docker Compose Configuration
+
+The included `docker-compose.yml` provides:
+
+- Automatic restart policies
+- Resource limits (512MB RAM, 1 CPU)
+- Health checks
+- Proper signal handling for graceful shutdown
+
+### Container Resource Management
+
+Default resource limits:
+
+```yaml
+# Memory limits
+limits:
+  memory: 512M
+reservations:
+  memory: 256M
+
+# CPU limits
+limits:
+  cpus: '1'
+reservations:
+  cpus: '0.5'
+```
+
+Adjust these in `docker-compose.yml` based on your workload.
+
+### Docker Best Practices
+
+1. **Use tagged versions** for production: `toon-mcp-server:1.0.0`
+2. **Monitor container health**: `docker ps --format "table {{.Names}}\t{{.Status}}"`
+3. **Check logs regularly**: `docker logs toon-mcp-server`
+4. **Update images**: Rebuild periodically for security updates
+
+### Troubleshooting Docker Installation
+
+**Issue**: Container exits immediately
+```bash
+# Check logs for errors
+docker logs toon-mcp-server
+
+# Run interactively to debug
+docker run -it toon-mcp-server:latest /bin/bash
+```
+
+**Issue**: Permission denied
+```bash
+# Ensure Docker daemon is running
+sudo systemctl start docker
+
+# Add user to docker group (requires logout)
+sudo usermod -aG docker $USER
+```
+
+**Issue**: Port conflicts
+```bash
+# List all running containers
+docker ps -a
+
+# Stop conflicting containers
+docker stop <container-id>
+```
+
 ## MCP Server Configuration
 
 ### Installation Flow

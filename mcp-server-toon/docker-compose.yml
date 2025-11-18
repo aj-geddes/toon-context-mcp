@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  toon-mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: toon-mcp-server:latest
+    container_name: toon-mcp-server
+
+    # MCP servers typically communicate via stdio
+    # This can be customized based on how you want to interact with the container
+    stdin_open: true
+    tty: true
+
+    # Resource limits (optional, adjust as needed)
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+    # Restart policy
+    restart: unless-stopped
+
+    # Labels for organization
+    labels:
+      - "com.toon-mcp.description=TOON MCP Server for token optimization"
+      - "com.toon-mcp.version=1.0.0"
+
+    # Health check
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
