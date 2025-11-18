@@ -116,4 +116,4 @@ MIT
 
 ## Documentation
 
-Full documentation available at `/docs`
+Full documentation available at [`/docs`](https://aj-geddes.github.io/toon-context-mcp)
